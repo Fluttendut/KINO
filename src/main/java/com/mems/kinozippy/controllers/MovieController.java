@@ -1,6 +1,4 @@
 package com.mems.kinozippy.controllers;
-
-import com.mems.kinozippy.entities.Movie;
 import com.mems.kinozippy.repositories.MovieRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
