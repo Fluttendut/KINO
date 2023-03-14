@@ -1,6 +1,8 @@
 package com.mems.kinozippy.repositories;
 
-import java.sql.Connection;
+import com.mems.kinozippy.entities.Movie;
+import org.springframework.data.jpa.repository.JpaRepository;
+
 
 public class MovieRepository {
 

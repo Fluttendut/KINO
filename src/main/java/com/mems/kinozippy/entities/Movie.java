@@ -1,8 +1,14 @@
 package com.mems.kinozippy.entities;
 
-public class Movie {
+import jakarta.persistence.*;
 
-    private String title, genre, length;
+@Entity
+public class Movie {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private String title;
+    private String genre;
+    private String length;
     private int rating;
     private int ageRestriction;
 
