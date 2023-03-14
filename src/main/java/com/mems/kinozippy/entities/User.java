@@ -1,29 +1,30 @@
 package com.mems.kinozippy.entities;
 
 import com.mems.kinozippy.enums.UserType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
+@Entity
 public class User {
-  private String firstName, username, password;
 
+  @Id
+  private String username;
+  @Column(name="pw")
+  private String password;
+  private String firstName;
   private UserType userType;
 
-  public User(String firstName, String username, String password, UserType userType) {
-    this.firstName = firstName;
+  public User(String username, String password, String firstName, UserType userType) {
     this.username = username;
     this.password = password;
+    this.firstName = firstName;
     this.userType = userType;
   }
 
   public User() {
   }
 
-  public String getFirstName() {
-    return firstName;
-  }
-
-  public void setFirstName(String firstName) {
-    this.firstName = firstName;
-  }
 
   public String getUsername() {
     return username;
@@ -41,6 +42,14 @@ public class User {
     this.password = password;
   }
 
+  public String getFirstName() {
+    return firstName;
+  }
+
+  public void setFirstName(String firstName) {
+    this.firstName = firstName;
+  }
+
   public UserType getUserType() {
     return userType;
   }
@@ -52,9 +61,9 @@ public class User {
   @Override
   public String toString() {
     return "User{" +
-        "firstName='" + firstName + '\'' +
-        ", username='" + username + '\'' +
+        "username='" + username + '\'' +
         ", password='" + password + '\'' +
+        ", firstName='" + firstName + '\'' +
         ", userType=" + userType +
         '}';
   }
