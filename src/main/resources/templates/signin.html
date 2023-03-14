@@ -38,12 +38,10 @@
             <h1 class="h3 mb-3 fw-normal">Medarbejder Log ind</h1>
 
             <div class="form-floating">
-                <!--TODO: invalid alert til at virke - virker i michael.html!-->
                 <input name="username" type="text" class="form-control" id="floatingInput"
                        placeholder="navn@eksempel.dk"
-                       pattern="^([a-zA-Z0-9_-.]+)@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.)|(([a-zA-Z0-9-]+.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(]?)$"
-                       oninvalid="this.setCustomValidity('Invalid email: @ or . is missing')"
-                       onkeyup="setCustomValidity('')">
+                       pattern="[^ @]*@[^ @]*"
+                       oninvalid="this.setCustomValidity('Invalid email: @ or . is missing')">
                 <label for="floatingInput">Brugernavn</label>
             </div>
             <div class="form-floating">

@@ -20,13 +20,13 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public Optional<User> getUserByUsername(String username) {
-    return  userRepo.findById(username);
+    return userRepo.findById(username);
 
   }
 
   @Override
-  public Optional<User> getUserByPassword(String password) {
-    return userRepo.findUserByPassword(password);
+  public Optional<User> getUserByUsernameAndPassword(String username, String password) {
+    return userRepo.findUserByUsernameAndPassword(username, password);
   }
 
   @Override
@@ -36,8 +36,7 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public boolean AuthenticateUser(String username, String password) {
-    Optional<User> user = userRepo.findById(username);
-    return true;
+    return getUserByUsernameAndPassword(username, password).isPresent();
   }
 
 

@@ -1,0 +1,3 @@
+DROP DATABASE kino;
+CREATE DATABASE kino;
+USE kino;

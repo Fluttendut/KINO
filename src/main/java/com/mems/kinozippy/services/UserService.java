@@ -9,8 +9,7 @@ public interface UserService {
 
   Optional<User> getUserByUsername(String username);
 
-  Optional<User> getUserByPassword(String password);
-
+  Optional<User> getUserByUsernameAndPassword(String username, String password);
 
   List<User> getAllUsers();
 
