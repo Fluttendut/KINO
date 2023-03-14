@@ -1,9 +1,11 @@
 .btn-primary {
-    background-color: #1892c3;
+    background-color: #bc2026;
+    border-color: black;
+    border-width: 2px;
 }
 
 .btn-primary:hover {
-    background-color: #1478a1;
+    background-color: #bc2000;
 }
 
 .nav-link {
