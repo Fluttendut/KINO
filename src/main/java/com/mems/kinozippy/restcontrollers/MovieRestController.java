@@ -2,9 +2,9 @@ package com.mems.kinozippy.restcontrollers;
 
 import com.mems.kinozippy.repositories.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 import com.mems.kinozippy.entities.Movie;
 
@@ -32,5 +32,12 @@ public class MovieRestController {
 
         return movieRepository.findAll();
     }
+
+    @PostMapping("/createmovie")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Movie postMovie(@RequestBody Movie movie) {
+        return movieRepository.save(movie);
+    }
+
 }
 //Backend er kun til at hente eller opdatere data
