@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int movieId;
     private String title;
     private String genre;
     private String length;
@@ -27,7 +28,13 @@ public class Movie {
         this.rating = rating;
         this.ageRestriction = ageRestriction;
     }
+    public int getMovieId() {
+        return movieId;
+    }
 
+    public void setMovieId(int movieId) {
+        this.movieId = movieId;
+    }
     public String getTitle() {
         return title;
     }
