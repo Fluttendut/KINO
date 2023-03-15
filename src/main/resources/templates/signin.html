@@ -2,10 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charSet="utf-8" class="next-head"/>
-    <title class="next-head">Medarbejder Log ind | Bilabonnement</title>
-    <meta name="description"
-          content="Bilabonnement.dk tilbyder bl.a. Peugeot, Citroën, Opel og Fiat på abonnement med alt inklusiv: Service, forsikring og ejerafgift."
-          class="next-head"/>
+    <title class="next-head">Medarbejder Log ind | Kino</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="icon"
           href="https://res.cloudinary.com/digital-interdan-bilabonnement/image/upload/v1578666243/favicon_1_npgufd.ico"
@@ -15,14 +12,16 @@
           integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
     <!-- Custom styles for this template -->
-        <link href="/css/signin.css" rel="stylesheet">
-        <link href="/css/buttons.css" rel="stylesheet">
+    <link href="/css/signin.css" rel="stylesheet">
+    <link href="/css/buttons.css" rel="stylesheet">
+
 </head>
-<body class="text-center flex-box" style="flex-direction: column">
+<body id="bg-login" class="text-center flex-box" style="flex-direction: column">
 <div class="flex-content">
-    <img
-            src="https://res.cloudinary.com/digital-interdan-bilabonnement/image/upload/c_fit,q_80,w_128/v1/Logos/logo_brands_0922_ltj2wu.svg"
-            alt="" width="622" height="78">
+    <!--TODO:gammelt billede fra tidligere projekt-->
+    <!--    <img
+                src="https://res.cloudinary.com/digital-interdan-bilabonnement/image/upload/c_fit,q_80,w_128/v1/Logos/logo_brands_0922_ltj2wu.svg"
+                alt="" width="622" height="78">-->
 </div>
 <div class="flex-content" style="height: 16px">
     <br><br>
@@ -30,12 +29,12 @@
         <p th:text="${message}"></p>
     </div>
 </div>
-<main class="form-signin w-100 m-auto">
+<main class="form-signin w-100 m-auto card">
     <form th:action="@{/signinUser}" method="POST">
 
         <div class="flex-content">
 
-            <h1 class="h3 mb-3 fw-normal">Medarbejder Log ind</h1>
+            <h1 class="h3 mb-3 fw-normal kino-header">Medarbejder Log ind</h1>
 
             <div class="form-floating">
                 <input name="username" type="text" class="form-control" id="floatingInput"
@@ -53,7 +52,7 @@
         </div>
     </form>
 </main>
-
-<p class="mt-5 mb-3 text-muted">&copy;Knud W. Bruun anno 1914</p>
+<!--TODO: kino-footer virker ikke-->
+<p class="mt-5 mb-3 text-muted kino-footer">&copy;Kino Zippy anno 2023</p>
 </body>
 </html>
