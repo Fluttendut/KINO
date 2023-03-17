@@ -1,70 +1,67 @@
 package com.mems.kinozippy.entities;
 
 import com.mems.kinozippy.enums.UserType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.Collection;
+import java.util.List;
+
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-public class User {
+public class User implements UserDetails {
 
   @Id
   private String username;
   @Column(name="pw")
   private String password;
   private String firstName;
+  @Column(columnDefinition = "ENUM('ADMIN', 'SALES', 'OPERATOR', 'INSPECTION')")
+  @Enumerated(EnumType.STRING)
   private UserType userType;
 
-  public User(String username, String password, String firstName, UserType userType) {
-    this.username = username;
-    this.password = password;
-    this.firstName = firstName;
-    this.userType = userType;
+
+  @Override
+  public boolean isAccountNonExpired() {
+    return true;
   }
 
-  public User() {
+  @Override
+  public boolean isAccountNonLocked() {
+    return true;
   }
 
+  @Override
+  public boolean isCredentialsNonExpired() {
+    return true;
+  }
 
+  @Override
+  public boolean isEnabled() {
+    return true;
+  }
+
+  @Override
+  public Collection<? extends GrantedAuthority> getAuthorities() {
+    return List.of(new SimpleGrantedAuthority(userType.name()));
+  }
+
+  @Override
   public String getUsername() {
     return username;
   }
 
-  public void setUsername(String username) {
-    this.username = username;
-  }
-
+  @Override
   public String getPassword() {
     return password;
-  }
-
-  public void setPassword(String password) {
-    this.password = password;
-  }
-
-  public String getFirstName() {
-    return firstName;
-  }
-
-  public void setFirstName(String firstName) {
-    this.firstName = firstName;
-  }
-
-  public UserType getUserType() {
-    return userType;
-  }
-
-  public void setUserType(UserType userType) {
-    this.userType = userType;
-  }
-
-  @Override
-  public String toString() {
-    return "User{" +
-        "username='" + username + '\'' +
-        ", password='" + password + '\'' +
-        ", firstName='" + firstName + '\'' +
-        ", userType=" + userType +
-        '}';
   }
 }
