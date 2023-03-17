@@ -28,7 +28,8 @@ public class MovieService {
     }
 
     public ResponseEntity<String> editMovie (@RequestBody MovieRequestDTO movieRequestDTO) {
-        Movie movie = new Movie();
+        //Movie movie = new Movie();
+        Movie movie = movieRepo.findMovieByTitle(movieRequestDTO.getTitle()).get();
         movie.setTitle(movieRequestDTO.getTitle());
         movie.setGenre(movieRequestDTO.getGenre());
         movie.setLength(movieRequestDTO.getLength());
