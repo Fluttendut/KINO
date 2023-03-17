@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
+
 import com.mems.kinozippy.entities.Movie;
 
 @RestController
@@ -50,6 +52,25 @@ public class MovieRestController {
     public ResponseEntity<String> postMovie(@RequestBody MovieRequestDTO movie) {
         return movieService.createMovie(movie);
     }
+
+    @DeleteMapping("/deleteMovie/{title}")
+    public ResponseEntity<Movie> updateCount(@PathVariable String title, @RequestBody Movie movie) {
+        Optional<Movie> optMovie = movieRepository.findMovieByTitle(title);
+        if (optMovie.isPresent()) {
+            movieRepository.delete(movie);
+            return new ResponseEntity<>(movie,HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PostMapping("/editMovie")
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseEntity<String> postMovieEdit(@RequestBody MovieRequestDTO movie) {
+        return movieService.editMovie(movie);
+    }
+
+
 
 }
 //Backend er kun til at hente eller opdatere data

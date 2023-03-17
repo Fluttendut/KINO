@@ -27,6 +27,18 @@ public class MovieService {
             return ResponseEntity.ok("Movie created");
     }
 
+    public ResponseEntity<String> editMovie (@RequestBody MovieRequestDTO movieRequestDTO) {
+        Movie movie = new Movie();
+        movie.setTitle(movieRequestDTO.getTitle());
+        movie.setGenre(movieRequestDTO.getGenre());
+        movie.setLength(movieRequestDTO.getLength());
+        movie.setRating(movieRequestDTO.getRating());
+        movie.setAgeRestriction(movieRequestDTO.getAgeRestriction());
+
+        movieRepo.save(movie);
 
 
-        }
+        return ResponseEntity.ok("Movie edited");
+    }
+
+}
