@@ -28,7 +28,7 @@ public class AuthenticationService {
         .username(request.getUsername())
         .password(passwordEncoder.encode(request.getPassword()))
         .firstName(request.getFirstName())
-        .userType(UserType.ADMIN) //statisk, men kan ændres ved at lave det til en parameter.
+        .userType(request.getUserType())
         .build();
     userRepo.save(user);
     var jwtToken = jwtService.generateToken(user);
