@@ -5,14 +5,13 @@ import com.mems.kinozippy.repositories.UserRepo;
 import com.mems.kinozippy.services.UserService;
 import org.springframework.stereotype.Service;
 
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
 
-  private UserRepo userRepo;
+  private final UserRepo userRepo;
 
   public UserServiceImpl(UserRepo userRepo) {
     this.userRepo = userRepo;
