@@ -20,7 +20,7 @@ public class MovieRestController {
     @Autowired
     MovieRepository movieRepository;
 
-    private MovieService movieService;
+    private final MovieService movieService;
 
     public MovieRestController(MovieService movieService) {
         this.movieService = movieService;

@@ -15,6 +15,9 @@ public class MovieRequestDTO {
         this.ageRestriction = ageRestriction;
     }
 
+    public MovieRequestDTO() {
+    }
+
     public String getTitle() {
         return title;
     }
