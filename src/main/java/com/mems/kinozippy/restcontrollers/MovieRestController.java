@@ -15,6 +15,7 @@ import com.mems.kinozippy.entities.Movie;
 
 @RestController
 @CrossOrigin
+@RequestMapping("/api/v1")
 public class MovieRestController {
 
     @Autowired
