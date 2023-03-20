@@ -11,7 +11,7 @@ public class Movie {
     private String genre;
     private String length;
     private int rating;
-    private int ageRestriction;
+    private String ageRestriction;
 
 
     public Movie(String title) {
@@ -21,7 +21,7 @@ public class Movie {
     }
 
     //Not used yet
-    public Movie(String title, String genre, String length, int rating, int ageRestriction) {
+    public Movie(String title, String genre, String length, int rating, String ageRestriction) {
         this.title = title;
         this.genre = genre;
         this.length = length;
@@ -67,11 +67,11 @@ public class Movie {
         this.rating = rating;
     }
 
-    public int getAgeRestriction() {
+    public String getAgeRestriction() {
         return ageRestriction;
     }
 
-    public void setAgeRestriction(int ageRestriction) {
+    public void setAgeRestriction(String ageRestriction) {
         this.ageRestriction = ageRestriction;
     }
 

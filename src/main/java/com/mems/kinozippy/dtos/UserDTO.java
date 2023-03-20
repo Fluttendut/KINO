@@ -1,8 +1,6 @@
 package com.mems.kinozippy.dtos;
 
 import com.mems.kinozippy.enums.UserType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Id;
 
 public class UserDTO {
 

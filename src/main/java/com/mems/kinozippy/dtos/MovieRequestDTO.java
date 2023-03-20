@@ -5,14 +5,17 @@ public class MovieRequestDTO {
     private String genre;
     private String length;
     private int rating;
-    private int ageRestriction;
+    private String ageRestriction;
 
-    public MovieRequestDTO(String title, String genre, String length, int rating, int ageRestriction) {
+    public MovieRequestDTO(String title, String genre, String length, int rating, String ageRestriction) {
         this.title = title;
         this.genre = genre;
         this.length = length;
         this.rating = rating;
         this.ageRestriction = ageRestriction;
+    }
+
+    public MovieRequestDTO() {
     }
 
     public String getTitle() {
@@ -47,11 +50,11 @@ public class MovieRequestDTO {
         this.rating = rating;
     }
 
-    public int getAgeRestriction() {
+    public String getAgeRestriction() {
         return ageRestriction;
     }
 
-    public void setAgeRestriction(int ageRestriction) {
+    public void setAgeRestriction(String ageRestriction) {
         this.ageRestriction = ageRestriction;
     }
 }
