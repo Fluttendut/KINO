@@ -1,6 +1,8 @@
 package com.mems.kinozippy.dtos;
 
 public class MovieRequestDTO {
+
+    private int movieId;
     private String title;
     private String genre;
     private String length;
@@ -15,7 +17,24 @@ public class MovieRequestDTO {
         this.ageRestriction = ageRestriction;
     }
 
+    public MovieRequestDTO(int movieId, String title, String genre, String length, int rating, String ageRestriction) {
+        this.movieId = movieId;
+        this.title = title;
+        this.genre = genre;
+        this.length = length;
+        this.rating = rating;
+        this.ageRestriction = ageRestriction;
+    }
+
     public MovieRequestDTO() {
+    }
+
+    public int getMovieId() {
+        return movieId;
+    }
+
+    public void setMovieId(int movieId) {
+        this.movieId = movieId;
     }
 
     public String getTitle() {
