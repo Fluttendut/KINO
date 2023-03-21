@@ -1,19 +1,19 @@
 package com.mems.kinozippy.dtos;
 
-import com.mems.kinozippy.enums.UserType;
+import com.mems.kinozippy.enums.Role;
 
 public class UserDTO {
 
   private String username;
   private String password;
   private String firstName;
-  private UserType userType;
+  private Role role;
 
-  public UserDTO(String username, String password, String firstName, UserType userType) {
+  public UserDTO(String username, String password, String firstName, Role role) {
     this.username = username;
     this.password = password;
     this.firstName = firstName;
-    this.userType = userType;
+    this.role = role;
   }
 
   public UserDTO() {
@@ -43,11 +43,11 @@ public class UserDTO {
     this.firstName = firstName;
   }
 
-  public UserType getUserType() {
-    return userType;
+  public Role getUserType() {
+    return role;
   }
 
-  public void setUserType(UserType userType) {
-    this.userType = userType;
+  public void setUserType(Role role) {
+    this.role = role;
   }
 }

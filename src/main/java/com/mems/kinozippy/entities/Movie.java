@@ -1,88 +1,25 @@
 package com.mems.kinozippy.entities;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.*;
 
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString /*Remember to add ToString.Exclude to lazy fields, https://www.jpa-buddy.com/blog/lombok-and-jpa-what-may-go-wrong/*/
 public class Movie {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int movieId;
-    private String title;
-    private String genre;
-    private String length;
-    private int rating;
-    private String ageRestriction;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private int movieId;
+  private String title;
+  private String genre;
+  private String length;
+  private int rating;
+  private String ageRestriction;
 
-
-    public Movie(String title) {
-        this.title = title;
-    }
-    public Movie() {
-    }
-
-    //Not used yet
-    public Movie(String title, String genre, String length, int rating, String ageRestriction) {
-        this.title = title;
-        this.genre = genre;
-        this.length = length;
-        this.rating = rating;
-        this.ageRestriction = ageRestriction;
-    }
-    public int getMovieId() {
-        return movieId;
-    }
-
-    public void setMovieId(int movieId) {
-        this.movieId = movieId;
-    }
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getGenre() {
-        return genre;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
-
-    public String getLength() {
-        return length;
-    }
-
-    public void setLength(String length) {
-        this.length = length;
-    }
-
-    public int getRating() {
-        return rating;
-    }
-
-    public void setRating(int rating) {
-        this.rating = rating;
-    }
-
-    public String getAgeRestriction() {
-        return ageRestriction;
-    }
-
-    public void setAgeRestriction(String ageRestriction) {
-        this.ageRestriction = ageRestriction;
-    }
-
-    @Override
-    public String toString() {
-        return "Movie{" +
-                "title='" + title + '\'' +
-                ", genre='" + genre + '\'' +
-                ", length='" + length + '\'' +
-                ", rating=" + rating +
-                ", ageRestriction=" + ageRestriction +
-                '}';
-    }
 }

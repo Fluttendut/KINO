@@ -3,12 +3,7 @@ package com.mems.kinozippy.restcontrollers;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
-import model.Row;
-import model.Seat;
-import model.TheaterRoom;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
 
 @RestController
 @CrossOrigin

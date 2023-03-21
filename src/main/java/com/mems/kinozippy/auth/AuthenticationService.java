@@ -1,10 +1,8 @@
 package com.mems.kinozippy.auth;
 
 import com.mems.kinozippy.config.JwtService;
-import com.mems.kinozippy.enums.UserType;
-import com.mems.kinozippy.repositories.UserRepo;
 import com.mems.kinozippy.entities.User;
-
+import com.mems.kinozippy.repositories.UserRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -28,7 +26,7 @@ public class AuthenticationService {
         .username(request.getUsername())
         .password(passwordEncoder.encode(request.getPassword()))
         .firstName(request.getFirstName())
-        .userType(request.getUserType())
+        .role(request.getRole())
         .build();
     userRepo.save(user);
     var jwtToken = jwtService.generateToken(user);

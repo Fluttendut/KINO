@@ -1,6 +1,6 @@
 package com.mems.kinozippy.enums;
 
-public enum UserType {
+public enum Role {
   ADMIN,
   SALES,
   OPERATOR,

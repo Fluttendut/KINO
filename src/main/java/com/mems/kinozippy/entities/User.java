@@ -1,11 +1,8 @@
 package com.mems.kinozippy.entities;
 
-import com.mems.kinozippy.enums.UserType;
+import com.mems.kinozippy.enums.Role;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,21 +10,23 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@ToString /*Remember to add ToString.Exclude to lazy fields, https://www.jpa-buddy.com/blog/lombok-and-jpa-what-may-go-wrong/*/
 public class User implements UserDetails {
 
   @Id
   private String username;
-  @Column(name="pw")
+  @Column(name = "pw")
   private String password;
   private String firstName;
   @Column(columnDefinition = "ENUM('ADMIN', 'SALES', 'OPERATOR', 'INSPECTION')")
   @Enumerated(EnumType.STRING)
-  private UserType userType;
+  private Role role;
 
 
   @Override
@@ -52,7 +51,7 @@ public class User implements UserDetails {
 
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
-    return List.of(new SimpleGrantedAuthority(userType.name()));
+    return List.of(new SimpleGrantedAuthority(role.name()));
   }
 
   @Override
