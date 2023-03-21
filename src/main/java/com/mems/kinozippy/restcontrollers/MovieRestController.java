@@ -1,6 +1,7 @@
 package com.mems.kinozippy.restcontrollers;
 
 import com.mems.kinozippy.dtos.MovieRequestDTO;
+import com.mems.kinozippy.entities.Movie;
 import com.mems.kinozippy.repositories.MovieRepository;
 import com.mems.kinozippy.services.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,24 +12,28 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-import com.mems.kinozippy.entities.Movie;
-
 @RestController
 @CrossOrigin
 @RequestMapping("/api/v1")
-public class MovieRestController {
+public class MovieRestController
+{
 
     @Autowired
     MovieRepository movieRepository;
 
     private final MovieService movieService;
 
-    public MovieRestController(MovieService movieService) {
+    public MovieRestController(MovieService movieService)
+    {
         this.movieService = movieService;
     }
 
+
+
     @GetMapping("/movies")
-    public List<Movie> getMovies() {
+    public List<Movie> getMovies()
+    {
+
         return movieRepository.findAll();
     }
 
@@ -50,27 +55,32 @@ public class MovieRestController {
 
     @PostMapping("/createMovie")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<String> postMovie(@RequestBody MovieRequestDTO movie) {
+    public ResponseEntity<String> postMovie(@RequestBody MovieRequestDTO movie)
+    {
         return movieService.createMovie(movie);
     }
 
     @DeleteMapping("/deleteMovie/{title}")
-    public ResponseEntity<Movie> updateCount(@PathVariable String title, @RequestBody Movie movie) {
+    public ResponseEntity<Movie> updateCount(@PathVariable String title, @RequestBody Movie movie)
+    {
         Optional<Movie> optMovie = movieRepository.findMovieByTitle(title);
-        if (optMovie.isPresent()) {
+        if (optMovie.isPresent())
+        {
             movieRepository.delete(movie);
-            return new ResponseEntity<>(movie,HttpStatus.OK);
-        } else {
+            return new ResponseEntity<>(movie, HttpStatus.OK);
+        }
+        else
+        {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
     @PostMapping("/editMovie")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<String> postMovieEdit(@RequestBody MovieRequestDTO movie) {
+    public ResponseEntity<String> postMovieEdit(@RequestBody MovieRequestDTO movie)
+    {
         return movieService.editMovie(movie);
     }
-
 
 
 }
