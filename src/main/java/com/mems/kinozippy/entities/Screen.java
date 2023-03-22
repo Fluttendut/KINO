@@ -15,10 +15,10 @@ import java.util.Set;
 public class Screen {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name ="screen_id")
+  @Column(name = "screen_id")
   private int screenId;
 
-  @OneToMany(mappedBy = "screen")
+  @OneToMany(mappedBy = "screen", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
   @ToString.Exclude
   private Set<Row> rows = new HashSet<>();
   /*ArrayList<Row> rows = new ArrayList<Row>();*/

@@ -1,4 +1,4 @@
-package com.mems.kinozippy.restcontrollers;
+package com.mems.kinozippy.controllers;
 
 import com.mems.kinozippy.dtos.MovieRequestDTO;
 import com.mems.kinozippy.entities.Movie;
@@ -15,7 +15,7 @@ import java.util.Optional;
 @RestController
 @CrossOrigin
 @RequestMapping("/api/v1")
-public class MovieRestController
+public class MovieController
 {
 
     @Autowired
@@ -23,7 +23,7 @@ public class MovieRestController
 
     private final MovieService movieService;
 
-    public MovieRestController(MovieService movieService)
+    public MovieController(MovieService movieService)
     {
         this.movieService = movieService;
     }

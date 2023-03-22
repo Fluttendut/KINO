@@ -1,4 +1,4 @@
-package com.mems.kinozippy.restcontrollers;
+package com.mems.kinozippy.controllers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

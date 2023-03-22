@@ -22,7 +22,7 @@ public class Row {
   @JoinColumn(name = "screen_id")
   @ToString.Exclude
   private Screen screen;
-  @OneToMany(mappedBy = "row")
+  @OneToMany(mappedBy = "row", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
   @ToString.Exclude
   private Set<Seat> seats = new HashSet<>();
   /*ArrayList<Seat> seats = new ArrayList<Seat>();*/
