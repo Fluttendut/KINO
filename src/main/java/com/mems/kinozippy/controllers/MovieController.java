@@ -84,4 +84,3 @@ public class MovieController
 
 
 }
-//Backend er kun til at hente eller opdatere data
