@@ -17,7 +17,7 @@ public class Seat {
   private int seat_number;
 
   @ManyToOne
-  @JoinColumn(name = "row_id", referencedColumnName = "seat_id")
+  @JoinColumn(name = "row_id")
   @ToString.Exclude
   private Row row;
 

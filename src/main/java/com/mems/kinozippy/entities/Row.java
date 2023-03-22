@@ -21,7 +21,7 @@ public class Row {
   private int row_number;
 
   @ManyToOne
-  @JoinColumn(name = "screen_id", referencedColumnName = "row_id")
+  @JoinColumn(name = "screen_id")
   @ToString.Exclude
   private Screen screen;
 /*
