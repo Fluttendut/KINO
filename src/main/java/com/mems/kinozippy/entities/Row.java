@@ -19,7 +19,7 @@ public class Row {
   private int rowId;
 
   @ManyToOne
-  @JoinColumn(name = "screen_id")
+  @JoinColumn(name = "screen_id", referencedColumnName = "row_id")
   @ToString.Exclude
   private Screen screen;
   @OneToMany(mappedBy = "row", cascade = CascadeType.ALL, fetch = FetchType.LAZY)

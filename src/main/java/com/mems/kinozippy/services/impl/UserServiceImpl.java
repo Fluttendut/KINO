@@ -1,7 +1,7 @@
 package com.mems.kinozippy.services.impl;
 
 import com.mems.kinozippy.entities.User;
-import com.mems.kinozippy.repositories.UserRepo;
+import com.mems.kinozippy.repositories.UserRepository;
 import com.mems.kinozippy.services.UserService;
 import org.springframework.stereotype.Service;
 
@@ -11,26 +11,26 @@ import java.util.Optional;
 @Service
 public class UserServiceImpl implements UserService {
 
-  private final UserRepo userRepo;
+  private final UserRepository userRepository;
 
-  public UserServiceImpl(UserRepo userRepo) {
-    this.userRepo = userRepo;
+  public UserServiceImpl(UserRepository userRepository) {
+    this.userRepository = userRepository;
   }
 
   @Override
   public Optional<User> getUserByUsername(String username) {
-    return userRepo.findById(username);
+    return userRepository.findById(username);
 
   }
 
   @Override
   public Optional<User> getUserByUsernameAndPassword(String username, String password) {
-    return userRepo.findUserByUsernameAndPassword(username, password);
+    return userRepository.findUserByUsernameAndPassword(username, password);
   }
 
   @Override
   public List<User> getAllUsers() {
-    return userRepo.findAll();
+    return userRepository.findAll();
   }
 
   @Override

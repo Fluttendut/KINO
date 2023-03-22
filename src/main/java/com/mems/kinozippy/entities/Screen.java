@@ -12,6 +12,8 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString /*Remember to add ToString.Exclude to lazy fields, https://www.jpa-buddy.com/blog/lombok-and-jpa-what-may-go-wrong/*/
+
+
 public class Screen {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,5 +23,6 @@ public class Screen {
   @OneToMany(mappedBy = "screen", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
   @ToString.Exclude
   private Set<Row> rows = new HashSet<>();
+
 
 }

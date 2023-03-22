@@ -2,7 +2,7 @@ package com.mems.kinozippy.auth;
 
 import com.mems.kinozippy.config.JwtService;
 import com.mems.kinozippy.entities.User;
-import com.mems.kinozippy.repositories.UserRepo;
+import com.mems.kinozippy.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class AuthenticationService {
 
-  private final UserRepo userRepo;
+  private final UserRepository userRepository;
   private final PasswordEncoder passwordEncoder;
 
   private final JwtService jwtService;
@@ -28,7 +28,7 @@ public class AuthenticationService {
         .firstName(request.getFirstName())
         .role(request.getRole())
         .build();
-    userRepo.save(user);
+    userRepository.save(user);
     var jwtToken = jwtService.generateToken(user);
     return AuthenticationResponse.builder()
         .token(jwtToken)
@@ -42,7 +42,7 @@ public class AuthenticationService {
             request.getPassword()
         )
     );
-    var user = userRepo.findById(request.getUsername())
+    var user = userRepository.findById(request.getUsername())
         .orElseThrow(() -> new UsernameNotFoundException("User not found"));
     var jwtToken = jwtService.generateToken(user);
     return AuthenticationResponse.builder()

@@ -1,6 +1,6 @@
 package com.mems.kinozippy.dtos;
 
-public class theaterRoomDTO
+public class ScreenDTO
 {
 
 }
