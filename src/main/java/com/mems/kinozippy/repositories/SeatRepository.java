@@ -7,10 +7,12 @@ import java.util.Optional;
 
 public interface SeatRepository extends JpaRepository<Seat, Integer>
 {
-/*    Optional<Seat> findSeatingBySeatingId(int seatingId);
+    /*Optional<Seat> findSeatingBySeatingId(int seatingId);
 
-    Optional<Seat> findSeatingBySeatingIdAndMovieId(int seatingId, int movieId);*/
+    Optional<Seat> findSeatingBySeatingIdAndMovieId(int seatingId, int movieId);
 
+
+     */
 }
 
 
