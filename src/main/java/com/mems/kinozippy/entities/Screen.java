@@ -21,6 +21,5 @@ public class Screen {
   @OneToMany(mappedBy = "screen", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
   @ToString.Exclude
   private Set<Row> rows = new HashSet<>();
-  /*ArrayList<Row> rows = new ArrayList<Row>();*/
 
 }

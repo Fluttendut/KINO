@@ -25,6 +25,5 @@ public class Row {
   @OneToMany(mappedBy = "row", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
   @ToString.Exclude
   private Set<Seat> seats = new HashSet<>();
-  /*ArrayList<Seat> seats = new ArrayList<Seat>();*/
 
 }

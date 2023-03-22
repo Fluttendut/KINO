@@ -2,7 +2,6 @@ package com.mems.kinozippy.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
-
 @Entity
 @Getter
 @Setter

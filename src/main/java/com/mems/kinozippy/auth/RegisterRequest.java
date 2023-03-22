@@ -1,15 +1,13 @@
 package com.mems.kinozippy.auth;
 
 import com.mems.kinozippy.enums.Role;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
-@Builder
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class RegisterRequest {
   private String username;
   private String password;
