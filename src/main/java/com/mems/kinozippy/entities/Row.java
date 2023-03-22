@@ -21,9 +21,10 @@ public class Row {
   private int row_number;
 
   @ManyToOne
-  @JoinColumn(name = "screen_id")
+  @JoinColumn(name = "screen_id", referencedColumnName = "row_id")
   @ToString.Exclude
   private Screen screen;
+/*
   @OneToMany(mappedBy = "row")
   @ToString.Exclude
   private Set<Seat> seats = new HashSet<>();
