@@ -18,6 +18,8 @@ public class Row {
   @Column(name = "row_id")
   private int rowId;
 
+  private int row_number;
+
   @ManyToOne
   @JoinColumn(name = "screen_id")
   @ToString.Exclude
