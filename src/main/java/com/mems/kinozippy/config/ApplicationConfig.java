@@ -1,6 +1,6 @@
 package com.mems.kinozippy.config;
 
-import com.mems.kinozippy.repositories.UserRepo;
+import com.mems.kinozippy.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,11 +16,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 @RequiredArgsConstructor
 public class ApplicationConfig {
-  private final UserRepo userRepo;
+  private final UserRepository userRepository;
 
   @Bean
   public UserDetailsService userDetailsService() {
-    return username -> userRepo.findById(username)
+    return username -> userRepository.findById(username)
         .orElseThrow(() -> new UsernameNotFoundException("User not found"));
   }
 
