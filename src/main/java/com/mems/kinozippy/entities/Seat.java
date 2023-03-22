@@ -14,7 +14,7 @@ public class Seat {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "seat_id")
   private int seatId;
-  private String name;
+  private int seat_number;
 
   @ManyToOne
   @JoinColumn(name = "row_id")
