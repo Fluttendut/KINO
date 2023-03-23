@@ -1,6 +1,5 @@
 package com.mems.kinozippy.entities;
 
-import com.mems.kinozippy.enums.ScreenType;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -15,19 +14,13 @@ import java.util.Set;
 @ToString /*Remember to add ToString.Exclude to lazy fields, https://www.jpa-buddy.com/blog/lombok-and-jpa-what-may-go-wrong/*/
 
 
-public class Screen {
+public class Auditorium {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "screen_id")
-  private int screenId;
-
-  @Column(columnDefinition = "ENUM('IMAX', 'LUXURY', 'NORMAL')")
-  @Enumerated(EnumType.STRING)
-  ScreenType screenType;
-
-  @OneToMany(mappedBy = "screen", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-  @ToString.Exclude
-  private Set<Row> rows = new HashSet<>();
+  @Column(name = "auditorium_id")
+  private int auditoriumId;
+  private int auditoriumNumber;
+  private int seatingCapacity;
 
 
 }

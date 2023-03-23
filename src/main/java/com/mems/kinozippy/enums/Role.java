@@ -4,5 +4,6 @@ public enum Role {
   ADMIN,
   SALES,
   OPERATOR,
-  INSPECTION
+  INSPECTION,
+  CUSTOMER
 }

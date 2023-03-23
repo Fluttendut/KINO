@@ -24,10 +24,10 @@ public class User implements UserDetails {
   @Column(name = "pw")
   private String password;
   private String firstName;
-  @Column(columnDefinition = "ENUM('ADMIN', 'SALES', 'OPERATOR', 'INSPECTION')")
+  private String lastName;
+  @Column(columnDefinition = "ENUM('ADMIN', 'SALES', 'OPERATOR', 'INSPECTION','CUSTOMER')")
   @Enumerated(EnumType.STRING)
   private Role role;
-
 
   @Override
   public boolean isAccountNonExpired() {

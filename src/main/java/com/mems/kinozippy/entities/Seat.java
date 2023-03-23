@@ -2,6 +2,7 @@ package com.mems.kinozippy.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+
 @Entity
 @Getter
 @Setter
@@ -13,11 +14,9 @@ public class Seat {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "seat_id")
   private int seatId;
-  private int seat_number;
+  private int auditoriumId;
+  private int seatNumber;
+  private int rowNumber;
 
-  @ManyToOne
-  @JoinColumn(name = "row_id")
-  @ToString.Exclude
-  private Row row;
 
 }

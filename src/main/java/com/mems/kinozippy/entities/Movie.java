@@ -1,9 +1,6 @@
 package com.mems.kinozippy.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -15,11 +12,14 @@ import lombok.*;
 public class Movie {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "movie_id")
   private int movieId;
   private String title;
   private String genre;
-  private String length;
+  private String length; /*RUNNING TIME*/
   private int rating;
   private String ageRestriction;
+
+  /*  private String description;*/
 
 }
