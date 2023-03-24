@@ -12,6 +12,7 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @ToString /*Remember to add ToString.Exclude to lazy fields, https://www.jpa-buddy.com/blog/lombok-and-jpa-what-may-go-wrong/*/
 public class Movie {
   @Id
@@ -27,7 +28,6 @@ public class Movie {
   private int rating; /*Should have been a double*/
   @NotNull
   private String ageRestriction;
-
 
   /*  private String description;*/ /*Bruges ikke*/
 

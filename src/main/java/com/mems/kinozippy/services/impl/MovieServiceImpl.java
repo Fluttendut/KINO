@@ -4,6 +4,7 @@ import com.mems.kinozippy.dtos.MovieRequestDTO;
 import com.mems.kinozippy.entities.Movie;
 import com.mems.kinozippy.repositories.MovieRepository;
 import com.mems.kinozippy.services.MovieService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,14 +13,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class MovieServiceImpl implements MovieService {
 
-
   private final MovieRepository movieRepo;
-
-  public MovieServiceImpl(MovieRepository movieRepo) {
-    this.movieRepo = movieRepo;
-  }
 
   public void deleteMovie(Movie movie) {
     movieRepo.delete(movie);

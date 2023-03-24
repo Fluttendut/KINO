@@ -1,5 +1,6 @@
 package com.mems.kinozippy.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -9,6 +10,7 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @ToString /*Remember to add ToString.Exclude to lazy fields, https://www.jpa-buddy.com/blog/lombok-and-jpa-what-may-go-wrong/*/
 public class Seat {
   @Id
@@ -19,6 +21,7 @@ public class Seat {
   private int seatNumber;
   @NotNull
   private int rowNumber;
+  @JsonIgnore
   @ManyToOne
   @JoinColumn(name = "auditorium_id")
   private Auditorium auditorium;

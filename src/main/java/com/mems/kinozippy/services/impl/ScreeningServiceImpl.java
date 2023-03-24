@@ -14,7 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ScreeningServiceImpl implements ScreeningService {
 
-  ScreeningRepo screeningRepo;
+  private final ScreeningRepo screeningRepo;
 
   @Override
   public List<Screening> getAllScreeningsByMovie(Movie movie) {

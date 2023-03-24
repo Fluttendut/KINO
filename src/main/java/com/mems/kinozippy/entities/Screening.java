@@ -1,5 +1,6 @@
 package com.mems.kinozippy.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -13,6 +14,7 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @ToString
 public class Screening {
   @Id
@@ -23,9 +25,11 @@ public class Screening {
   private Timestamp startTime;
   @NotNull
   private double ticketPrice;
+  @JsonIgnore
   @ManyToOne
   @JoinColumn(name = "movie_id")
   private Movie movie;
+  @JsonIgnore
   @ManyToOne
   @JoinColumn(name = "auditorium_id")
   private Auditorium auditorium;
