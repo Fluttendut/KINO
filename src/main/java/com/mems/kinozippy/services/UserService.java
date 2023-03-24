@@ -9,9 +9,5 @@ public interface UserService {
 
   Optional<User> getUserByUsername(String username);
 
-  Optional<User> getUserByUsernameAndPassword(String username, String password);
 
-  List<User> getAllUsers();
-
-  boolean AuthenticateUser(String username, String password);
 }

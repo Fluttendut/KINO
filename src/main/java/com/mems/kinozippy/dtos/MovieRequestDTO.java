@@ -1,15 +1,22 @@
 package com.mems.kinozippy.dtos;
 
+import lombok.*;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class MovieRequestDTO {
 
-    private int movieId;
-    private String title;
-    private String genre;
-    private String length;
-    private int rating;
-    private String ageRestriction;
+  private int movieId;
+  private String title;
+  private String genre;
+  private String length;
+  private int rating;
+  private String ageRestriction;
 
-    public MovieRequestDTO(String title, String genre, String length, int rating, String ageRestriction) {
+  /*  public MovieRequestDTO(String title, String genre, String length, int rating, String ageRestriction) {
         this.title = title;
         this.genre = genre;
         this.length = length;
@@ -75,5 +82,5 @@ public class MovieRequestDTO {
 
     public void setAgeRestriction(String ageRestriction) {
         this.ageRestriction = ageRestriction;
-    }
+    }*/
 }

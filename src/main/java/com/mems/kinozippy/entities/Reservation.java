@@ -1,6 +1,7 @@
 package com.mems.kinozippy.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 @Entity
@@ -12,14 +13,14 @@ import lombok.*;
 public class Reservation {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "reservation_id")
   private int reservationId;
-
-  /*private int userId;*/ /*Bruges ikke, User ID er username*/
-
-  private String username;
-
+  @NotNull
   private int screeningId;
-
-  private int reservedSeatId;
+  @ManyToOne
+  @JoinColumn(name = "user_id")
+  private User user;
+  @OneToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "reserved_seat_id")
+  @ToString.Exclude
+  private ReservedSeat reservedSeat;
 }

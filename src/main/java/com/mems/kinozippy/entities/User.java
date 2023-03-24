@@ -2,13 +2,16 @@ package com.mems.kinozippy.entities;
 
 import com.mems.kinozippy.enums.Role;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -20,14 +23,24 @@ import java.util.List;
 public class User implements UserDetails {
 
   @Id
-  private String username;
-  @Column(name = "pw")
-  private String password;
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private int userId;
+  @NotNull
   private String firstName;
   private String lastName;
+  @Column(unique = true)
+  @NotNull
+  private String username;
+  @Column(name = "pw")
+  @NotNull
+  private String password;
   @Column(columnDefinition = "ENUM('ADMIN', 'SALES', 'OPERATOR', 'INSPECTION','CUSTOMER')")
   @Enumerated(EnumType.STRING)
+  @NotNull
   private Role role;
+  @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+  @ToString.Exclude
+  final private Set<Reservation> reservations = new HashSet<>();
 
   @Override
   public boolean isAccountNonExpired() {

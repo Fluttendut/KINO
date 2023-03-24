@@ -19,23 +19,8 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public Optional<User> getUserByUsername(String username) {
-    return userRepository.findById(username);
+    return userRepository.findUserByUsername(username);
 
-  }
-
-  @Override
-  public Optional<User> getUserByUsernameAndPassword(String username, String password) {
-    return userRepository.findUserByUsernameAndPassword(username, password);
-  }
-
-  @Override
-  public List<User> getAllUsers() {
-    return userRepository.findAll();
-  }
-
-  @Override
-  public boolean AuthenticateUser(String username, String password) {
-    return getUserByUsernameAndPassword(username, password).isPresent();
   }
 
 

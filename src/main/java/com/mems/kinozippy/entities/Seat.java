@@ -1,7 +1,11 @@
 package com.mems.kinozippy.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -12,11 +16,16 @@ import lombok.*;
 public class Seat {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "seat_id")
   private int seatId;
-  private int auditoriumId;
+  @NotNull
   private int seatNumber;
+  @NotNull
   private int rowNumber;
-
+  @ManyToOne
+  @JoinColumn(name = "auditorium_id")
+  private Auditorium auditorium;
+  @OneToOne(mappedBy = "seat", cascade = CascadeType.ALL)
+  @ToString.Exclude
+  private ReservedSeat reservedSeat;
 
 }

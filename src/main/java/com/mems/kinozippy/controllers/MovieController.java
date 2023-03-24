@@ -2,9 +2,7 @@ package com.mems.kinozippy.controllers;
 
 import com.mems.kinozippy.dtos.MovieRequestDTO;
 import com.mems.kinozippy.entities.Movie;
-import com.mems.kinozippy.repositories.MovieRepository;
-import com.mems.kinozippy.services.MovieService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.mems.kinozippy.services.impl.MovieServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,72 +13,41 @@ import java.util.Optional;
 @RestController
 @CrossOrigin
 @RequestMapping("/api/v1")
-public class MovieController
-{
+public class MovieController {
 
-    @Autowired
-    MovieRepository movieRepository;
+  private final MovieServiceImpl movieServiceImpl;
 
-    private final MovieService movieService;
+  public MovieController(MovieServiceImpl movieServiceImpl) {
+    this.movieServiceImpl = movieServiceImpl;
+  }
 
-    public MovieController(MovieService movieService)
-    {
-        this.movieService = movieService;
+  @GetMapping("/movies")
+  public List<Movie> getMovies() {
+    return movieServiceImpl.getAllMovies();
+  }
+
+  @PostMapping("/createMovie")
+  @ResponseStatus(HttpStatus.CREATED)
+  public ResponseEntity<String> postMovie(@RequestBody MovieRequestDTO movie) {
+    return movieServiceImpl.createMovie(movie);
+  }
+
+  @DeleteMapping("/deleteMovie/{title}")
+  public ResponseEntity<Movie> updateCount(@PathVariable String title, @RequestBody Movie movie) {
+    Optional<Movie> optMovie = movieServiceImpl.getMovieByTitle(title);
+    if (optMovie.isPresent()) {
+      movieServiceImpl.deleteMovie(movie);
+      return new ResponseEntity<>(movie, HttpStatus.OK);
+    } else {
+      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+  }
 
-
-
-    @GetMapping("/movies")
-    public List<Movie> getMovies()
-    {
-
-        return movieRepository.findAll();
-    }
-
-    /*
-    @GetMapping ("/addmovie")
-    public List<Movie> addMovies() {
-        Movie movie = new Movie();
-        movie.setTitle("Titanic");
-        movie.setGenre("Horror");
-        movie.setLength("120");
-        movie.setRating(5);
-        movie.setAgeRestriction(12);
-        movieRepository.save(movie);
-
-        return movieRepository.findAll();
-    }
-
-     */
-
-    @PostMapping("/createMovie")
-    @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<String> postMovie(@RequestBody MovieRequestDTO movie)
-    {
-        return movieService.createMovie(movie);
-    }
-
-    @DeleteMapping("/deleteMovie/{title}")
-    public ResponseEntity<Movie> updateCount(@PathVariable String title, @RequestBody Movie movie)
-    {
-        Optional<Movie> optMovie = movieRepository.findMovieByTitle(title);
-        if (optMovie.isPresent())
-        {
-            movieRepository.delete(movie);
-            return new ResponseEntity<>(movie, HttpStatus.OK);
-        }
-        else
-        {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-
-    @PostMapping("/editMovie")
-    @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<String> postMovieEdit(@RequestBody MovieRequestDTO movie)
-    {
-        return movieService.editMovie(movie);
-    }
+  @PostMapping("/editMovie")
+  @ResponseStatus(HttpStatus.CREATED)
+  public ResponseEntity<String> postMovieEdit(@RequestBody MovieRequestDTO movie) {
+    return movieServiceImpl.editMovie(movie);
+  }
 
 
 }

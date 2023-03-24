@@ -1,12 +1,12 @@
 package com.mems.kinozippy.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -18,7 +18,15 @@ public class Screening {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int screeningId;
-  private int movieId;
-  private int auditoriumId;
+  @NotNull
   private Timestamp startTime;
+  @ManyToOne
+  @JoinColumn(name = "movie_id")
+  private Movie movie;
+  @ManyToOne
+  @JoinColumn(name = "auditorium_id")
+  private Auditorium auditorium;
+  @OneToMany(mappedBy = "screening", cascade = CascadeType.ALL)
+  @ToString.Exclude
+  private Set<ReservedSeat> reservedSeats = new HashSet<>();
 }
