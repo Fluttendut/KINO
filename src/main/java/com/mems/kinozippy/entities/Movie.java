@@ -16,6 +16,7 @@ import java.util.Set;
 public class Movie {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name ="movie_id")
   private int movieId;
   @NotNull
   private String title;
@@ -23,9 +24,10 @@ public class Movie {
   private String genre;
   @NotNull
   private String length; /*RUNNING TIME*/ /*Burde nok være impl som integer*/
-  private int rating;
+  private int rating; /*Should have been a double*/
   @NotNull
   private String ageRestriction;
+
 
   /*  private String description;*/ /*Bruges ikke*/
 

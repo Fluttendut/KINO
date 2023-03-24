@@ -3,6 +3,7 @@ package com.mems.kinozippy.controllers;
 import com.mems.kinozippy.dtos.MovieRequestDTO;
 import com.mems.kinozippy.entities.Movie;
 import com.mems.kinozippy.services.impl.MovieServiceImpl;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,13 +14,10 @@ import java.util.Optional;
 @RestController
 @CrossOrigin
 @RequestMapping("/api/v1")
+@RequiredArgsConstructor
 public class MovieController {
 
   private final MovieServiceImpl movieServiceImpl;
-
-  public MovieController(MovieServiceImpl movieServiceImpl) {
-    this.movieServiceImpl = movieServiceImpl;
-  }
 
   @GetMapping("/movies")
   public List<Movie> getMovies() {

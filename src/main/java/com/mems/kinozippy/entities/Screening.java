@@ -17,9 +17,12 @@ import java.util.Set;
 public class Screening {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name ="screening_id")
   private int screeningId;
   @NotNull
   private Timestamp startTime;
+  @NotNull
+  private double ticketPrice;
   @ManyToOne
   @JoinColumn(name = "movie_id")
   private Movie movie;
@@ -29,4 +32,7 @@ public class Screening {
   @OneToMany(mappedBy = "screening", cascade = CascadeType.ALL)
   @ToString.Exclude
   private Set<ReservedSeat> reservedSeats = new HashSet<>();
+  @OneToMany(mappedBy = "screening", cascade = CascadeType.ALL)
+  @ToString.Exclude
+  private Set<Reservation> reservations = new HashSet<>();
 }

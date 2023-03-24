@@ -4,9 +4,6 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
-import java.util.HashSet;
-import java.util.Set;
-
 @Entity
 @Getter
 @Setter
@@ -16,6 +13,7 @@ import java.util.Set;
 public class Seat {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name ="seat_id")
   private int seatId;
   @NotNull
   private int seatNumber;
