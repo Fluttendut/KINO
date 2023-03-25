@@ -9,7 +9,6 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @ToString
 public class ReservedSeat {
   @Id
@@ -21,6 +20,7 @@ public class ReservedSeat {
   @JoinColumn(name = "seat_id")
   @ToString.Exclude
   private Seat seat;
+  @JsonIgnore
   @OneToOne(mappedBy = "reservedSeat", cascade = CascadeType.ALL)
   @ToString.Exclude
   private Reservation reservation;

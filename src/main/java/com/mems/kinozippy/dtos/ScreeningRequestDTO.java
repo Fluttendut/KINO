@@ -8,7 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 @ToString
-public class MovieRequestDTO {
+public class ScreeningRequestDTO {
 
   private int movieId;
   private String title;

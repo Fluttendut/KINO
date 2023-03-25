@@ -10,7 +10,6 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @ToString /*Remember to add ToString.Exclude to lazy fields, https://www.jpa-buddy.com/blog/lombok-and-jpa-what-may-go-wrong/*/
 public class Seat {
   @Id
@@ -25,6 +24,7 @@ public class Seat {
   @ManyToOne
   @JoinColumn(name = "auditorium_id")
   private Auditorium auditorium;
+  @JsonIgnore
   @OneToOne(mappedBy = "seat", cascade = CascadeType.ALL)
   @ToString.Exclude
   private ReservedSeat reservedSeat;

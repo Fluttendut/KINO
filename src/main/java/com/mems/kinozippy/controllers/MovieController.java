@@ -2,7 +2,11 @@ package com.mems.kinozippy.controllers;
 
 import com.mems.kinozippy.dtos.MovieRequestDTO;
 import com.mems.kinozippy.entities.Movie;
+import com.mems.kinozippy.entities.Screening;
+import com.mems.kinozippy.repositories.ScreeningRepo;
+import com.mems.kinozippy.services.ScreeningService;
 import com.mems.kinozippy.services.impl.MovieServiceImpl;
+import com.mems.kinozippy.services.impl.ScreeningServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

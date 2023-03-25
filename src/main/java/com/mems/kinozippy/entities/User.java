@@ -1,5 +1,6 @@
 package com.mems.kinozippy.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.mems.kinozippy.enums.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -39,9 +40,10 @@ public class User implements UserDetails {
   @Enumerated(EnumType.STRING)
   @NotNull
   private Role role;
+  @JsonIgnore
   @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
   @ToString.Exclude
-  final private Set<Reservation> reservations = new HashSet<>();
+  private Set<Reservation> reservations/* = new HashSet<>()*/;
 
   @Override
   public boolean isAccountNonExpired() {

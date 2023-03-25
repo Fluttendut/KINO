@@ -1,5 +1,6 @@
 package com.mems.kinozippy.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -31,8 +32,9 @@ public class Movie {
 
   /*  private String description;*/ /*Bruges ikke*/
 
+  @JsonIgnore
   @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
   @ToString.Exclude
-  private Set<Screening> screenings = new HashSet<>();
+  private Set<Screening> screenings/* = new HashSet<>()*/;
 
 }

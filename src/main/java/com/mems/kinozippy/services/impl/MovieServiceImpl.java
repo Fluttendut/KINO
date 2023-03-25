@@ -18,6 +18,7 @@ public class MovieServiceImpl implements MovieService {
 
   private final MovieRepository movieRepo;
 
+
   public void deleteMovie(Movie movie) {
     movieRepo.delete(movie);
   }
