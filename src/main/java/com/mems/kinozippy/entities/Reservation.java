@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Getter
 @Setter
@@ -15,16 +18,16 @@ public class Reservation {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name ="reservation_id")
   private int reservationId;
-  @JsonIgnore
+
   @ManyToOne
   @JoinColumn(name = "user_id")
   private User user;
+
+  @OneToMany(mappedBy = "reservation", cascade = CascadeType.ALL)
   @JsonIgnore
-  @OneToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "reserved_seat_id")
   @ToString.Exclude
-  private ReservedSeat reservedSeat;
-  @JsonIgnore
+  private Set<ReservedSeat> reservedSeats = new HashSet<>();
+
   @ManyToOne
   @JoinColumn(name = "screening_id")
   private Screening screening;

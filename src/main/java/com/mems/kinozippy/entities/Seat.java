@@ -5,6 +5,9 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Getter
 @Setter
@@ -20,13 +23,14 @@ public class Seat {
   private int seatNumber;
   @NotNull
   private int rowNumber;
-  @JsonIgnore
+
   @ManyToOne
   @JoinColumn(name = "auditorium_id")
   private Auditorium auditorium;
+
+  @OneToMany(mappedBy = "seat", cascade = CascadeType.ALL)
   @JsonIgnore
-  @OneToOne(mappedBy = "seat", cascade = CascadeType.ALL)
   @ToString.Exclude
-  private ReservedSeat reservedSeat;
+  private Set<ReservedSeat> reservedSeats = new HashSet<>();
 
 }

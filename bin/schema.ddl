@@ -1,6 +1,6 @@
-DROP DATABASE kinotest;
-CREATE DATABASE kinotest;
-USE kinotest;
+DROP DATABASE kinotest2;
+CREATE DATABASE kinotest2;
+USE kinotest2;
 
 DROP TABLE user;
 CREATE TABLE user

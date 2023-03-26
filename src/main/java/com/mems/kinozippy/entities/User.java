@@ -40,10 +40,11 @@ public class User implements UserDetails {
   @Enumerated(EnumType.STRING)
   @NotNull
   private Role role;
-  @JsonIgnore
+
   @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+  @JsonIgnore
   @ToString.Exclude
-  private Set<Reservation> reservations/* = new HashSet<>()*/;
+  private Set<Reservation> reservations = new HashSet<>();
 
   @Override
   public boolean isAccountNonExpired() {

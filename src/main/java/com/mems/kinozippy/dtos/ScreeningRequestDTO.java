@@ -1,5 +1,6 @@
 package com.mems.kinozippy.dtos;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 @Getter
@@ -10,78 +11,9 @@ import lombok.*;
 @ToString
 public class ScreeningRequestDTO {
 
-  private int movieId;
-  private String title;
-  private String genre;
-  private String length;
-  private int rating;
-  private String ageRestriction;
+  private int screeningId;
 
-  /*  public MovieRequestDTO(String title, String genre, String length, int rating, String ageRestriction) {
-        this.title = title;
-        this.genre = genre;
-        this.length = length;
-        this.rating = rating;
-        this.ageRestriction = ageRestriction;
-    }
+  private String startTime;
 
-    public MovieRequestDTO(int movieId, String title, String genre, String length, int rating, String ageRestriction) {
-        this.movieId = movieId;
-        this.title = title;
-        this.genre = genre;
-        this.length = length;
-        this.rating = rating;
-        this.ageRestriction = ageRestriction;
-    }
-
-    public MovieRequestDTO() {
-    }
-
-    public int getMovieId() {
-        return movieId;
-    }
-
-    public void setMovieId(int movieId) {
-        this.movieId = movieId;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getGenre() {
-        return genre;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
-
-    public String getLength() {
-        return length;
-    }
-
-    public void setLength(String length) {
-        this.length = length;
-    }
-
-    public int getRating() {
-        return rating;
-    }
-
-    public void setRating(int rating) {
-        this.rating = rating;
-    }
-
-    public String getAgeRestriction() {
-        return ageRestriction;
-    }
-
-    public void setAgeRestriction(String ageRestriction) {
-        this.ageRestriction = ageRestriction;
-    }*/
+  private double ticketPrice;
 }

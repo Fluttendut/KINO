@@ -1,12 +1,11 @@
 package com.mems.kinozippy.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
-import java.sql.Timestamp;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -25,20 +24,17 @@ public class Screening {
   private String startTime; /*Originally Timestamp, but JSON can't handle timestamps*/
   @NotNull
   private double ticketPrice;
-  @JsonProperty
-  @ManyToOne(fetch = FetchType.EAGER)
+
+  @ManyToOne
   @JoinColumn(name = "movie_id")
   private Movie movie;
-  @JsonProperty
-  @ManyToOne(fetch = FetchType.EAGER)
+
+  @ManyToOne
   @JoinColumn(name = "auditorium_id")
   private Auditorium auditorium;
-  @JsonIgnore
+
   @OneToMany(mappedBy = "screening", cascade = CascadeType.ALL)
-  @ToString.Exclude
-  private Set<ReservedSeat> reservedSeats/* = new HashSet<>()*/;
   @JsonIgnore
-  @OneToMany(mappedBy = "screening", cascade = CascadeType.ALL)
   @ToString.Exclude
-  private Set<Reservation> reservations/* = new HashSet<>()*/;
+  private Set<Reservation> reservations = new HashSet<>();
 }

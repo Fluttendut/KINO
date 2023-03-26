@@ -1,6 +1,5 @@
 package com.mems.kinozippy.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -15,18 +14,14 @@ public class ReservedSeat {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name ="reserved_seat_id")
   private int reservedSeatId;
-  @JsonIgnore
-  @OneToOne(fetch = FetchType.LAZY)
+
+  @ManyToOne
   @JoinColumn(name = "seat_id")
   @ToString.Exclude
   private Seat seat;
-  @JsonIgnore
-  @OneToOne(mappedBy = "reservedSeat", cascade = CascadeType.ALL)
+
+  @ManyToOne
+  @JoinColumn(name = "reservation_id")
   @ToString.Exclude
   private Reservation reservation;
-  @JsonIgnore
-  @ManyToOne
-  @JoinColumn(name = "screening_id")
-  @ToString.Exclude
-  private Screening screening;
 }

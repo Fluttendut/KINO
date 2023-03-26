@@ -32,9 +32,9 @@ public class Movie {
 
   /*  private String description;*/ /*Bruges ikke*/
 
-  @JsonIgnore
   @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
+  @JsonIgnore
   @ToString.Exclude
-  private Set<Screening> screenings/* = new HashSet<>()*/;
+  private Set<Screening> screenings = new HashSet<>();
 
 }
